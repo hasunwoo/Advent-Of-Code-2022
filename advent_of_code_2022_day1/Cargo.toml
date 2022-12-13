@@ -1,0 +1,15 @@
+[package]
+name = "advent_of_code_2022_day1"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "first"
+path = "src/first.rs"
+
+
+[[bin]]
+name = "second"
+path = "src/second.rs"
+
+[dependencies]
