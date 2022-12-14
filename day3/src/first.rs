@@ -18,12 +18,10 @@ fn solve(input: &str) -> String {
 }
 
 fn priority(c: char) -> Option<usize> {
-    if ('a'..='z').contains(&c) {
-        Some(c as usize - 'a' as usize + 1)
-    } else if ('A'..='Z').contains(&c) {
-        Some(c as usize - 'A' as usize + 27)
-    } else {
-        None
+    match c {
+        'a'..='z' => Some(c as usize - 'a' as usize + 1),
+        'A'..='Z' => Some(c as usize - 'A' as usize + 27),
+        _ => None,
     }
 }
 
