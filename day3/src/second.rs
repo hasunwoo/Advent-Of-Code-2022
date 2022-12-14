@@ -10,7 +10,7 @@ fn main() {
 
 fn solve(input: &str) -> String {
     let groups = input
-        .split('\n')
+        .lines()
         .map(|s| s.chars().collect::<HashSet<char>>())
         .tuples::<(_, _, _)>();
     let common_items = groups

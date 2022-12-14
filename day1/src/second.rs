@@ -1,4 +1,4 @@
-use std::{fs, cmp::Reverse};
+use std::{cmp::Reverse, fs};
 
 fn main() {
     let input = fs::read_to_string("input.txt").unwrap();
@@ -10,7 +10,7 @@ fn solve(input: &str) -> String {
         let mut tmp: Vec<_> = input
             .split("\n\n")
             .map(|it| {
-                it.split('\n')
+                it.lines()
                     .map(|s| s.parse::<usize>().unwrap())
                     .sum::<usize>()
             })

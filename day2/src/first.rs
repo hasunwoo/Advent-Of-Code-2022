@@ -9,7 +9,7 @@ fn main() {
 
 fn solve(input: &str) -> String {
     let total_score = input
-        .split('\n')
+        .lines()
         .map(|s| {
             let mut s = s.split_whitespace();
             let opponent: Shape = s.next().unwrap().parse().unwrap();

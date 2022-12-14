@@ -7,7 +7,7 @@ fn main() {
 
 fn solve(input: &str) -> String {
     let priority_sum = input
-        .split('\n')
+        .lines()
         .map(|s| {
             let sack = s.parse::<Rucksack>().unwrap();
             let shared = sack.get_shared_items();
