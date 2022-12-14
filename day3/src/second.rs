@@ -14,20 +14,17 @@ fn solve(input: &str) -> String {
         .map(|s| s.chars().collect::<HashSet<char>>())
         .tuples::<(_, _, _)>();
     let common_items = groups
-        .map(|(a, b, c)| intersection(&[&a, &b, &c]).into_iter().next().unwrap())
+        .map(|(a, b, c)| *intersection(&[&a, &b, &c]).into_iter().next().unwrap())
         .map(|c| priority(c).unwrap())
         .sum::<usize>();
     format!("{common_items}")
 }
 
-fn intersection<T: Clone + Hash + Eq>(sets: &[&HashSet<T>]) -> HashSet<T> {
+fn intersection<'a, T: Hash + Eq>(sets: &[&'a HashSet<T>]) -> HashSet<&'a T> {
     if sets.is_empty() {
         return HashSet::new();
     }
-    if sets.len() == 1 {
-        return sets[0].clone();
-    }
-    let mut result = sets[0].clone();
+    let mut result: HashSet<&T> = sets[0].iter().collect();
     result.retain(|e| sets.iter().all(|s| s.contains(e)));
     result
 }
